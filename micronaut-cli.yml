@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: mifuchi
+---
+testFramework: spek
+sourceLanguage: kotlin
