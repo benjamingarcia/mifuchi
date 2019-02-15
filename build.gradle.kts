@@ -1,3 +1,4 @@
+
 plugins {
     id("io.spring.dependency-management") version "1.0.6.RELEASE"
     id("com.github.johnrengelman.shadow") version "4.0.2"
@@ -58,7 +59,7 @@ tasks.test {
 }
 
 configure<ApplicationPluginConvention> {
-    mainClassName = "mifuchi.Application"
+    mainClassName = "org.benji.mifuchi.Application"
 }
 
 tasks.named<JavaExec>("run") {
