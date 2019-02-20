@@ -35,6 +35,7 @@ dependencies {
     compile("org.jetbrains.kotlin","kotlin-reflect", kotlinVersion)
     compile("javax.annotation:javax.annotation-api")
     compile("io.micronaut:micronaut-runtime")
+    compile("io.micronaut.configuration","micronaut-postgres-reactive")
     kapt("io.micronaut:micronaut-inject-java")
     kapt("io.micronaut:micronaut-validation")
     kaptTest("io.micronaut:micronaut-inject-java")
