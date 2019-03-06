@@ -1,4 +1,4 @@
-package org.benji.mifuchi.pojo
+package org.benji.mifuchi.domain
 
 /**
  * cards types availables in a deck
