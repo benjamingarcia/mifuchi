@@ -5,7 +5,7 @@ postgres:
     reactive:
         client:
             port: 5432
-            host: mifuchi
+            host: localhost
             database: mifuchi
             user: mifuchi
             password: chifumi

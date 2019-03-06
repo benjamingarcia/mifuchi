@@ -5,6 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.2.61"
     id("org.jetbrains.kotlin.kapt") version "1.2.61"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.2.61"
+    id("org.flywaydb.flyway") version "5.2.4"
 }
 
 apply(plugin = "application")
@@ -34,7 +35,8 @@ dependencies {
     compile("org.jetbrains.kotlin","kotlin-stdlib-jdk8", kotlinVersion)
     compile("org.jetbrains.kotlin","kotlin-reflect", kotlinVersion)
     compile("javax.annotation:javax.annotation-api")
-    compile("io.micronaut:micronaut-runtime")
+    compile("io.micronaut","micronaut-runtime")
+    compile("org.postgresql","postgresql","42.2.5")
     compile("io.micronaut.configuration","micronaut-postgres-reactive")
     kapt("io.micronaut:micronaut-inject-java")
     kapt("io.micronaut:micronaut-validation")
@@ -59,6 +61,13 @@ tasks.test {
     useJUnitPlatform{
         includeEngines("spek2")
     }
+}
+
+flyway{
+    url = "jdbc:postgresql://localhost:5432/mifuchi"
+    user = "mifuchi"
+    password = "chifumi"
+    schemas = Array<String>(1){"mifuchi"}
 }
 
 configure<ApplicationPluginConvention> {
