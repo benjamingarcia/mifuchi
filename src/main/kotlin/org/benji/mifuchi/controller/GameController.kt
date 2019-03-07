@@ -16,7 +16,7 @@ class GameController(private val gameRepository: GameRepository){
     @Produces(MediaType.APPLICATION_JSON)
     fun initGame(): String {
         val handle = StartGameCommandHandler(gameRepository)
-        val id = handle.handle(StartGameCommand("spike", "guizmo"))
-        return """{"gameId":1,"size":$id}""".trimIndent()
+        val commandResponse = handle.handle(StartGameCommand("spike", "guizmo"))
+        return """{"gameId":"${commandResponse.getValue()}"}""".trimIndent()
     }
 }

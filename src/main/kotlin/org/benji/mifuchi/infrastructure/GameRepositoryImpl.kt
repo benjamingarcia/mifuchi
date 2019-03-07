@@ -20,8 +20,8 @@ class GameRepositoryImpl(private val client: PgPool) : GameRepository {
     }
 
     override fun add(game: Game) {
-        client.preparedQuery("INSERT INTO game (gamer1_id, game2_id, wawabbit_position) VALUES (\$$1, \$$2, \$$3)",
-                Tuple.of(game.gamer1Id, game.gamer2Id, game.wawabbitPosition)) { ar ->
+        client.preparedQuery("""INSERT INTO game (uuid, gamer1_id, gamer2_id, wawabbit_position) VALUES ($1, $2, $3, $4)""",
+                Tuple.of(game.uuid, game.gamer1Id, game.gamer2Id, game.wawabbitPosition)) { ar ->
             if (ar.succeeded()) {
                 val rows = ar.result()
                 println(rows.rowCount())
