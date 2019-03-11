@@ -4,14 +4,16 @@ import org.benji.mifuchi.common.Query
 import org.benji.mifuchi.common.QueryHandler
 import org.benji.mifuchi.domain.Game
 import org.benji.mifuchi.domain.GameRepository
+import javax.inject.Singleton
 
-class FindAllGamesQueryHandler(val gameRepository: GameRepository): QueryHandler<List<Game>>{
+@Singleton
+class FindAllGamesQueryHandler(private val gameRepository: GameRepository): QueryHandler<List<Game>>{
 
     override fun handle(query: Query): List<Game> {
         return gameRepository.getAllGame()
     }
 
     override fun listenTo(): String {
-        return FindAllGamesQuery::class.toString()
+        return FindAllGamesQuery::class.qualifiedName!!
     }
 }

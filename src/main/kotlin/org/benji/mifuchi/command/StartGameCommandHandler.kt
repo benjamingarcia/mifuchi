@@ -18,6 +18,6 @@ class StartGameCommandHandler(private val gameRepository: GameRepository) : Comm
     }
 
     override fun listenTo(): String {
-        return StartGameCommand::class.toString()
+        return StartGameCommand::class.qualifiedName!!
     }
 }
