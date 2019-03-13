@@ -4,18 +4,15 @@ import io.micronaut.context.annotation.Bean
 import io.micronaut.context.annotation.Factory
 import org.benji.mifuchi.common.CommandBusMiddleware
 import org.benji.mifuchi.common.CommandHandler
-import org.benji.mifuchi.middleware.CommandBusDispatcher
-import org.benji.mifuchi.middleware.LoggerMiddleware
-import java.util.*
+import org.benji.mifuchi.command.middleware.CommandBusDispatcher
+import org.benji.mifuchi.command.middleware.LoggerMiddleware
 import javax.inject.Inject
 
 @Factory
-class CommandBusFactory(@Inject private val handlers: List<CommandHandler<UUID>>) {
-
-
+class CommandBusFactory(@Inject private val handlers: List<CommandHandler>) {
 
     @Bean
-    fun build(): CommandBusMiddleware<UUID>{
+    fun build(): CommandBusMiddleware{
         return LoggerMiddleware(CommandBusDispatcher(handlers))
     }
 

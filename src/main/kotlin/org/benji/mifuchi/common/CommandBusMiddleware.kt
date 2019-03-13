@@ -1,6 +1,6 @@
 package org.benji.mifuchi.common
 
-interface CommandBusMiddleware<T> {
+interface CommandBusMiddleware {
 
-    fun dispatch(command: Command) : CommandResponse<T>
+    fun dispatch(command: Command) : CommandResponse
 }

@@ -1,5 +1,10 @@
 package org.benji.mifuchi.common
 
-interface CommandResponse<T>{
-    fun getValue(): T
+import java.util.*
+
+abstract class CommandResponse(val uuid: UUID, val events: Array<out Event>){
+
+    abstract fun withValue(uuid: UUID, vararg events: Event): CommandResponse
+
+    abstract fun hasEvents(): Boolean
 }

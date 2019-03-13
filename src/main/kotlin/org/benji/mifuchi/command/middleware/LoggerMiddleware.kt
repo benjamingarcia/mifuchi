@@ -1,14 +1,13 @@
-package org.benji.mifuchi.middleware
+package org.benji.mifuchi.command.middleware
 
 import org.benji.mifuchi.common.Command
 import org.benji.mifuchi.common.CommandBusMiddleware
 import org.benji.mifuchi.common.CommandResponse
 import java.time.Instant
-import java.util.*
 
-class LoggerMiddleware(val next:CommandBusMiddleware<UUID>): CommandBusMiddleware<UUID> {
+class LoggerMiddleware(val next:CommandBusMiddleware): CommandBusMiddleware {
 
-    override fun dispatch(command: Command): CommandResponse<UUID> {
+    override fun dispatch(command: Command): CommandResponse {
         val startTime:Instant = Instant.now()
         val response = next.dispatch(command)
         val endTime:Instant = Instant.now()

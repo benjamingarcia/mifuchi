@@ -9,13 +9,13 @@ import org.benji.mifuchi.common.CommandBusMiddleware
 import java.util.*
 
 @Controller("/game")
-class GameController(private val commandBus: CommandBusMiddleware<UUID>){
+class GameController(private val commandBus: CommandBusMiddleware){
 
 
     @Post("/init")
     @Produces(MediaType.APPLICATION_JSON)
     fun initGame(): String {
         val commandResponse = commandBus.dispatch(StartGameCommand("Spyke", "Guizmo"))
-        return """{"gameId":"${commandResponse.getValue()}"}""".trimIndent()
+        return """{"gameId":"${commandResponse.uuid}"}""".trimIndent()
     }
 }
