@@ -7,6 +7,5 @@ interface GameRepository : Repository {
     fun get(uuid: UUID): Game
     fun add(game: Game)
     fun delete(uuid: UUID)
-    fun getAllGame(): List<Game>
 }
 
