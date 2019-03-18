@@ -8,8 +8,8 @@ import org.benji.mifuchi.command.StartGameCommand
 import org.benji.mifuchi.common.CommandBusMiddleware
 import java.util.*
 
-@Controller("/game")
-class GameController(private val commandBus: CommandBusMiddleware){
+@Controller("/gameCommand")
+class GameCommandController(private val commandBus: CommandBusMiddleware){
 
 
     @Post("/init")

@@ -10,6 +10,7 @@ class GameInitializedLoggerHandler(private val gameRepository: GameRepository) :
 
     override fun handle(event: Event) {
         val game = gameRepository.get(event.getUuid())
+        println(game)
     }
 
 

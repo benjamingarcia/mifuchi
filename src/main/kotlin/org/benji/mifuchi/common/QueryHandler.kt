@@ -1,8 +1,8 @@
 package org.benji.mifuchi.common
 
-interface QueryHandler<T> {
+interface QueryHandler {
 
-    fun handle(query: Query): T
+    fun handle(query: Query):String
 
     fun listenTo():String
 }
