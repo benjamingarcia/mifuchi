@@ -19,8 +19,8 @@ class GameRepositoryImpl(private val client: PgPool) : GameRepository {
     }
 
     override fun add(game: Game) {
-        client.rxQuery("""INSERT INTO game (uuid, gamer1_id, gamer2_id, wawabbit_position)
-            |VALUES ('${game.uuid}', '${game.gamer1Id}', '${game.gamer2Id}', ${game.wawabbitPosition})""".trimMargin())
+        client.rxQuery("""INSERT INTO game (uuid, gamer1_id, gamer2_id, wawabbit_position, wawabbit_orientation)
+            |VALUES ('${game.uuid}', '${game.gamer1Id}', '${game.gamer2Id}', ${game.wawabbitPosition}, '${game.wawabbitOrientation}')""".trimMargin())
                 .blockingGet()
 
     }
