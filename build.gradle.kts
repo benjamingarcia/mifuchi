@@ -59,12 +59,6 @@ tasks.shadowJar {
 
 
 tasks.test {
-    flyway{
-        url = "jdbc:h2:mem:mfuchi"
-        user = "mifuchi"
-        password = "chifumi"
-        schemas = Array(1){"mifuchi"}
-    }
     dependsOn(tasks.flywayMigrate)
     useJUnitPlatform{
         includeEngines("spek2")
