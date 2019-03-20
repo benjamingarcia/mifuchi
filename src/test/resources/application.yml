@@ -1,0 +1,12 @@
+micronaut:
+    application:
+        name: mifuchi
+postgres:
+    reactive:
+        client:
+            port: 5432
+            host: localhost
+            database: mifuchi
+            user: mifuchi
+            password: chifumi
+            maxSize: 5

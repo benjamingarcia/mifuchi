@@ -6,7 +6,6 @@ import io.micronaut.http.annotation.Post
 import io.micronaut.http.annotation.Produces
 import org.benji.mifuchi.command.StartGameCommand
 import org.benji.mifuchi.common.CommandBusMiddleware
-import java.util.*
 
 @Controller("/gameCommand")
 class GameCommandController(private val commandBus: CommandBusMiddleware){

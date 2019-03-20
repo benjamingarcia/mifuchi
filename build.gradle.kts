@@ -47,6 +47,7 @@ dependencies {
     testCompile("org.hamcrest:hamcrest-all:1.3")
     testCompile("org.junit.jupiter:junit-jupiter-api:5.1.0")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.1.0")
+    testRuntime("com.h2database","h2","1.4.199")
     testImplementation("org.jetbrains.kotlin", "kotlin-test", kotlinVersion)
     testImplementation("org.spekframework.spek2", "spek-dsl-jvm", spekVersion)
     testRuntimeOnly("org.spekframework.spek2", "spek-runner-junit5", spekVersion)
@@ -58,6 +59,13 @@ tasks.shadowJar {
 
 
 tasks.test {
+    flyway{
+        url = "jdbc:h2:mem:mfuchi"
+        user = "mifuchi"
+        password = "chifumi"
+        schemas = Array(1){"mifuchi"}
+    }
+    dependsOn(tasks.flywayMigrate)
     useJUnitPlatform{
         includeEngines("spek2")
     }
@@ -67,7 +75,7 @@ flyway{
     url = "jdbc:postgresql://localhost:5432/mifuchi"
     user = "mifuchi"
     password = "chifumi"
-    schemas = Array<String>(1){"mifuchi"}
+    schemas = Array(1){"mifuchi"}
 }
 
 configure<ApplicationPluginConvention> {
