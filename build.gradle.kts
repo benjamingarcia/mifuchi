@@ -6,6 +6,14 @@ plugins {
     id("org.jetbrains.kotlin.kapt") version "1.2.61"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.2.61"
     id("org.flywaydb.flyway") version "5.2.4"
+    id("com.gradle.build-scan") version "2.2.1"
+}
+
+buildScan {
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
+
+    publishAlways()
 }
 
 apply(plugin = "application")
@@ -17,9 +25,7 @@ val spekVersion = "2.0.0"
 val junitVersion = "5.1.0"
 
 repositories {
-    mavenLocal()
-    mavenCentral()
-    maven(url = "https://jcenter.bintray.com")
+    jcenter()
 }
 
 dependencyManagement {
