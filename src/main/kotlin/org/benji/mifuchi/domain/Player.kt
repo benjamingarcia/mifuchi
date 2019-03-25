@@ -1,3 +1,5 @@
 package org.benji.mifuchi.domain
 
-class Gamer(val deck:Map<Int, Card>, val discard:Map<Int, Card>, val hand:List<Card>, val treasure:List<Treasure>, val color: PlayerColor)
+import java.util.*
+
+data class Player(val uuid: UUID, val name:String, val deck:Map<Int, Card>, val discard:Map<Int, Card> = emptyMap(), val hand:List<Card> = emptyList(), val treasure:List<Treasure> = emptyList(), val color: PlayerColor)

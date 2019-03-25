@@ -5,7 +5,7 @@ import org.benji.mifuchi.common.CommandBusMiddleware
 import org.benji.mifuchi.common.CommandHandler
 import org.benji.mifuchi.common.CommandResponse
 
-class CommandBusDispatcher(handlers: List<CommandHandler>) : CommandBusMiddleware {
+class CommandBusDispatcher(handlers: List<CommandHandler<Command>>) : CommandBusMiddleware {
 
     private val handlersMap = handlers.map { commandHandler -> Pair(commandHandler.listenTo(), commandHandler) }.toMap()
 

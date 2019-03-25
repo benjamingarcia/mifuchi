@@ -1,8 +1,8 @@
 package org.benji.mifuchi.common
 
-interface CommandHandler {
+interface CommandHandler <T : Command> {
 
-    fun handle(command: Command ): CommandResponse
+    fun handle(command: T ): CommandResponse
 
     fun listenTo():String
 }

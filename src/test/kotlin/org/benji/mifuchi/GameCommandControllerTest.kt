@@ -10,12 +10,17 @@ import kotlin.test.assertEquals
 
 object GameCommandControllerTest: Spek ({
 
-    describe("GameCommandController test suite"){
+    describe(description = "GameCommandController test suite"){
         var embeddedServer: EmbeddedServer = ApplicationContext.run(EmbeddedServer::class.java)
         var client: HttpClient = HttpClient.create(embeddedServer.url)
 
         it("test /gameCommand/init return game uuid") {
-            var rsp: String = client.toBlocking().retrieve(HttpRequest.POST("/gameCommand/init", ""))
+            var rsp: String = client.toBlocking().retrieve(HttpRequest.POST("/gameCommand/init", """
+                {
+                  "blueUserName" : "Guizmo",
+                  "orangeUserName" : "Spike"
+                }
+            """.trimIndent()))
             assert(rsp.isNotEmpty())
         }
 
