@@ -1,6 +1,5 @@
 package org.benji.mifuchi.command
 
-import org.benji.mifuchi.common.Command
 import org.benji.mifuchi.common.CommandHandler
 import org.benji.mifuchi.common.CommandResponse
 import org.benji.mifuchi.domain.*
@@ -11,11 +10,51 @@ import javax.inject.Singleton
 @Singleton
 class StartGameCommandHandler(private val gameRepository: GameRepository, private val playerRepository : PlayerRepository) : CommandHandler<StartGameCommand> {
 
+    private val defaultDeck = HashMap<Int, Card>(25)
+    init {
+        //3 cawotte
+        defaultDeck[0] = Card.CAWOTTE
+        defaultDeck[1] = Card.CAWOTTE
+        defaultDeck[2] = Card.CAWOTTE
+
+        //3 lenald
+        defaultDeck[3] = Card.LENALD
+        defaultDeck[4] = Card.LENALD
+        defaultDeck[5] = Card.LENALD
+
+        //6 rocks
+        defaultDeck[6] = Card.ROCK
+        defaultDeck[7] = Card.ROCK
+        defaultDeck[8] = Card.ROCK
+        defaultDeck[9] = Card.ROCK
+        defaultDeck[10] = Card.ROCK
+        defaultDeck[11] = Card.ROCK
+
+        //6 scissors
+        defaultDeck[12] = Card.SCISSORS
+        defaultDeck[13] = Card.SCISSORS
+        defaultDeck[14] = Card.SCISSORS
+        defaultDeck[15] = Card.SCISSORS
+        defaultDeck[16] = Card.SCISSORS
+        defaultDeck[17] = Card.SCISSORS
+
+        //6 leafs
+        defaultDeck[18] = Card.LEAF
+        defaultDeck[19] = Card.LEAF
+        defaultDeck[20] = Card.LEAF
+        defaultDeck[21] = Card.LEAF
+        defaultDeck[22] = Card.LEAF
+        defaultDeck[23] = Card.LEAF
+
+        // 1 dofus
+        defaultDeck[24] = Card.DOFUS
+    }
+
     override fun handle(command: StartGameCommand): CommandResponse {
         val uuid = UUID.randomUUID()
-        //todo create players
-        val blueDeck = createDeck()
-        val orangeDeck = createDeck()
+
+        val blueDeck = defaultDeck.toMap()
+        val orangeDeck = defaultDeck.toMap()
 
         val bluePlayer = Player(UUID.randomUUID(), command.blueUserName, blueDeck, color = PlayerColor.BLUE)
         val orangePlayer = Player(UUID.randomUUID(), command.orangeUserName, orangeDeck, color = PlayerColor.ORANGE)
@@ -26,50 +65,6 @@ class StartGameCommandHandler(private val gameRepository: GameRepository, privat
         return StartGameCommandResponse(uuid, GameInitialized(newGame.uuid, newGame.gamer1Id, newGame.gamer2Id))
     }
 
-    /**
-     * a deck have 3 cawotte, 1 dofus, 3 lenald, 6 rocks, 6 scissors, 6 leafs = 25 cards.
-     */
-    private fun createDeck(): Map<Int, Card> {
-        val deckMap = HashMap<Int, Card>(25)
-
-        //3 cawotte
-        deckMap[0] = Card.CAWOTTE
-        deckMap[1] = Card.CAWOTTE
-        deckMap[2] = Card.CAWOTTE
-
-        //3 lenald
-        deckMap[3] = Card.LENALD
-        deckMap[4] = Card.LENALD
-        deckMap[5] = Card.LENALD
-
-        //6 rocks
-        deckMap[6] = Card.ROCK
-        deckMap[7] = Card.ROCK
-        deckMap[8] = Card.ROCK
-        deckMap[9] = Card.ROCK
-        deckMap[10] = Card.ROCK
-        deckMap[11] = Card.ROCK
-
-        //6 scissors
-        deckMap[12] = Card.SCISSORS
-        deckMap[13] = Card.SCISSORS
-        deckMap[14] = Card.SCISSORS
-        deckMap[15] = Card.SCISSORS
-        deckMap[16] = Card.SCISSORS
-        deckMap[17] = Card.SCISSORS
-
-        //6 leafs
-        deckMap[18] = Card.LEAF
-        deckMap[19] = Card.LEAF
-        deckMap[20] = Card.LEAF
-        deckMap[21] = Card.LEAF
-        deckMap[22] = Card.LEAF
-        deckMap[23] = Card.LEAF
-
-        // 1 dofus
-        deckMap[24] = Card.DOFUS
-        return deckMap
-    }
 
     override fun listenTo(): String {
         return StartGameCommand::class.qualifiedName!!
