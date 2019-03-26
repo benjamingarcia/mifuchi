@@ -15,14 +15,14 @@ class PlayerRepositoryImpl(private val client: PgPool) : PlayerRepository{
     override fun get(uuid: UUID): Player {
         return client.rxQuery("""SELECT * FROM player where uuid = '$uuid'""").map { pgRowSet ->
             val row = pgRowSet.iterator().next()
-            Player(uuid = row.getUUID(1), name = row.getString(1), deck = emptyMap(), color = PlayerColor.valueOf(row.getString(2)))
+            Player(uuid = row.getUUID(1), name = row.getString(1), deck = emptyList(), color = PlayerColor.valueOf(row.getString(2)))
         }.blockingGet()
     }
 
     override fun add(player: Player) {
-        val jsonDeck = JsonObject.mapFrom(player.deck)
-        val jsonDiscard = JsonObject.mapFrom(player.discard)
-        val jsonHand = JsonArray(player.hand) //JsonObject.mapFrom(player.hand)
+        val jsonDeck = JsonArray(player.deck)
+        val jsonDiscard = JsonArray(player.discard)
+        val jsonHand = JsonArray(player.hand)
         val jsonTreasure = JsonArray(player.treasure)
 
         client.rxQuery("""INSERT INTO player (uuid, name, color, deck, discard, hand, treasure)

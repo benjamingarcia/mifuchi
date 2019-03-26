@@ -13,6 +13,6 @@ class GameQueryController(private val queryBus : QueryBus) {
     @Get("/list")
     @Produces(MediaType.APPLICATION_JSON)
     fun getAllGames():String{
-        return queryBus.dispatch(FindAllGamesQuery())
+        return queryBus.dispatch(FindAllGamesQuery()).toString()
     }
 }

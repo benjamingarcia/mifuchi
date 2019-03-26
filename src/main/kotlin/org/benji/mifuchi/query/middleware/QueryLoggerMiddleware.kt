@@ -1,13 +1,14 @@
 package org.benji.mifuchi.query.middleware
 
 import org.benji.mifuchi.common.Query
+import org.benji.mifuchi.common.QueryResponse
 import org.benji.mifuchi.query.QueryBus
 import org.slf4j.LoggerFactory
 import java.time.Instant
 
 class QueryLoggerMiddleware(val next:QueryBus): QueryBus {
 
-    override fun dispatch(query: Query) : String{
+    override fun dispatch(query: Query) : QueryResponse{
         val startTime:Instant = Instant.now()
         val response = next.dispatch(query)
         val endTime:Instant = Instant.now()
