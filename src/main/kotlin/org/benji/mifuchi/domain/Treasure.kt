@@ -1,5 +1,5 @@
 package org.benji.mifuchi.domain
 
-enum class Treasure {
-    CROWN, STICK, CAPE
-}
+import java.util.*
+
+data class Treasure(val uuid: UUID, val name: TreasureName, val state: TreasureState, val playerId: UUID, val gameId: UUID)
