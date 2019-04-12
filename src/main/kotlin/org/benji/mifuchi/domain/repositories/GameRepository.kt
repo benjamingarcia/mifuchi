@@ -1,6 +1,7 @@
-package org.benji.mifuchi.domain
+package org.benji.mifuchi.domain.repositories
 
 import org.benji.mifuchi.common.Repository
+import org.benji.mifuchi.domain.Game
 import java.util.*
 
 interface GameRepository : Repository {

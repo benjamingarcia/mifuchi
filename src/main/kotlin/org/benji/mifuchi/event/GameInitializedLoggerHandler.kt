@@ -2,7 +2,7 @@ package org.benji.mifuchi.event
 
 import org.benji.mifuchi.common.Event
 import org.benji.mifuchi.common.EventHandler
-import org.benji.mifuchi.domain.GameRepository
+import org.benji.mifuchi.domain.repositories.GameRepository
 import org.benji.mifuchi.infrastructure.GameRepositoryImpl
 import org.slf4j.LoggerFactory
 import javax.inject.Singleton

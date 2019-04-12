@@ -1,10 +1,8 @@
 package org.benji.mifuchi.infrastructure
 
 import io.reactiverse.reactivex.pgclient.PgPool
-import io.vertx.core.json.JsonArray
-import io.vertx.core.json.JsonObject
 import org.benji.mifuchi.domain.*
-import org.benji.mifuchi.query.middleware.QueryLoggerMiddleware
+import org.benji.mifuchi.domain.repositories.PlayerRepository
 import org.slf4j.LoggerFactory
 import java.util.*
 import javax.inject.Singleton
