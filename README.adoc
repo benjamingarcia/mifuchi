@@ -1,0 +1,24 @@
+= Mifuchi as a webapp
+Benjamin Garcia<benjamin.garcia@protonmail.com>
+
+Mifuchi is a simple board game as an extension of chifumi. It add some rules to change classic game.
+This application is an incubator to test and understand :
+
+- CQRS architecture even if it's overengineering in this case
+- Kotlin as default language to build, to code, well for everthing 🤟
+- micronaut, but I would like to move to quarkus. this transformation from one framework to another one can confirm than I split correctly all application parts.
+
+== How to
+
+- use adoptJDK, or jdk-zulu or graalvm as you wish
+- You need a Postgresql database. Connection data are in `application.yaml`. You can use a postgres docker image 🐳 .
+- to build : `./gradlew assemblee`
+
+[WARNING]
+====
+gradle scan build is enable by default, if you don't want this, disable it in build.gradle.kts 
+====
+
+Enjoy! 🥳
+
+One source to understand CQRS is this video : https://youtu.be/qBLtZN3p3FU[📺]
