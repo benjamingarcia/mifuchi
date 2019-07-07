@@ -1,4 +1,3 @@
-FROM openjdk:8u171-alpine3.7
-RUN apk --no-cache add curl
-COPY build/libs/*-all.jar mifuchi.jar
+FROM azul/zulu-openjdk:8u212
+COPY build/libs/*.jar mifuchi.jar
 CMD java ${JAVA_OPTS} -jar mifuchi.jar

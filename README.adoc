@@ -1,7 +1,7 @@
 = Mifuchi as a webapp
 Benjamin Garcia<benjamin.garcia@protonmail.com>
 
-Mifuchi is a simple board game as an extension of chifumi. It add some rules to change classic game.
+https://boardgamegeek.com/boardgame/158198/mifuchi[Mifuchi] is a simple board game as an extension of chifumi. It add some rules to change classic game.
 This application is an incubator to test and understand :
 
 - CQRS architecture even if it's overengineering in this case

@@ -20,9 +20,9 @@ apply(plugin = "application")
 
 version = "0.1"
 group = "mifuchi"
-val kotlinVersion = "1.3.21"
-val spekVersion = "2.0.0"
-val junitVersion = "5.1.0"
+val kotlinVersion = "1.3.41"
+val spekVersion = "2.0.5"
+val junitVersion = "5.5.0"
 
 repositories {
     jcenter()
@@ -30,7 +30,7 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom("io.micronaut:micronaut-bom:1.1.0.M1")
+        mavenBom("io.micronaut:micronaut-bom:1.1.4")
     }
 }
 
@@ -42,7 +42,7 @@ dependencies {
     compile("org.jetbrains.kotlin","kotlin-reflect", kotlinVersion)
     compile("javax.annotation:javax.annotation-api")
     compile("io.micronaut","micronaut-runtime")
-    compile("org.postgresql","postgresql","42.2.5")
+    compile("org.postgresql","postgresql","42.2.6")
     compile("io.micronaut.configuration","micronaut-postgres-reactive")
     kapt("io.micronaut:micronaut-inject-java")
     kapt("io.micronaut:micronaut-validation")
@@ -51,9 +51,8 @@ dependencies {
     runtime("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.7")
     testCompile("io.micronaut:micronaut-inject-java")
     testCompile("org.hamcrest:hamcrest-all:1.3")
-    testCompile("org.junit.jupiter:junit-jupiter-api:5.1.0")
-    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.1.0")
-    testRuntime("com.h2database","h2","1.4.199")
+    testCompile("org.junit.jupiter","junit-jupiter-api",junitVersion)
+    testRuntime("org.junit.jupiter","junit-jupiter-engine",junitVersion)
     testImplementation("org.jetbrains.kotlin", "kotlin-test", kotlinVersion)
     testImplementation("org.spekframework.spek2", "spek-dsl-jvm", spekVersion)
     testRuntimeOnly("org.spekframework.spek2", "spek-runner-junit5", spekVersion)
