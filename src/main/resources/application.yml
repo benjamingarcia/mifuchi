@@ -10,3 +10,16 @@ postgres:
             user: mifuchi
             password: chifumi
             maxSize: 5
+datasources:
+    default:
+        url: 'jdbc:postgresql://localhost:5432/mifuchi"'
+        username: 'mifuchi'
+        password: 'chifumi'
+        driverClassName: 'org.postgresql.Driver'
+
+flyway:
+    datasources:
+        default:
+            locations:
+                classpath:db.migrations
+
