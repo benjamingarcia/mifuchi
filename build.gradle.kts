@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.2.61"
     id("org.jetbrains.kotlin.kapt") version "1.2.61"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.2.61"
-    id("org.flywaydb.flyway") version "5.2.4"
+//    id("org.flywaydb.flyway") version "5.2.4"
     id("com.gradle.build-scan") version "2.2.1"
 }
 
@@ -20,7 +20,7 @@ apply(plugin = "application")
 
 version = "0.1"
 group = "mifuchi"
-val kotlinVersion = "1.3.41"
+val kotlinVersion = "1.3.50"
 val spekVersion = "2.0.5"
 val junitVersion = "5.5.0"
 
@@ -30,7 +30,7 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom("io.micronaut:micronaut-bom:1.1.4")
+        mavenBom("io.micronaut:micronaut-bom:1.2.3")
     }
 }
 
@@ -64,18 +64,18 @@ tasks.shadowJar {
 
 
 tasks.test {
-    dependsOn(tasks.flywayMigrate)
+//    dependsOn(tasks.flywayMigrate)
     useJUnitPlatform{
         includeEngines("spek2")
     }
 }
 
-flyway{
-    url = "jdbc:postgresql://localhost:5432/mifuchi"
-    user = "mifuchi"
-    password = "chifumi"
-    schemas = Array(1){"mifuchi"}
-}
+//flyway{
+//    url = "jdbc:postgresql://localhost:5432/mifuchi"
+//    user = "mifuchi"
+//    password = "chifumi"
+//    schemas = Array(1){"mifuchi"}
+//}
 
 configure<ApplicationPluginConvention> {
     mainClassName = "org.benji.mifuchi.Application"
